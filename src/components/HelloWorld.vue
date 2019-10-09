@@ -5,7 +5,8 @@
       <div class="node-wrap">
         <div class="node-wrap-box"></div>
         <div class="add-node-btn-box">
-          <div class="add-node-btn"> <button>+</button>
+          <div class="add-node-btn">
+            <button>+</button>
           </div>
         </div>
       </div>
@@ -19,7 +20,8 @@
               <div class="condition-node">
                 <div class="condition-node-box">
                   <div class="auto-judge"></div>
-                  <div class="add-node-btn"> <button>+</button>
+                  <div class="add-node-btn">
+                    <button>+</button>
                   </div>
                 </div>
               </div>
@@ -33,7 +35,8 @@
                       <div class="condition-node">
                         <div class="condition-node-box">
                           <div class="auto-judge"></div>
-                          <div class="add-node-btn"> <button>+</button>
+                          <div class="add-node-btn">
+                            <button>+</button>
                           </div>
                         </div>
                       </div>
@@ -41,7 +44,8 @@
                       <div class="node-wrap">
                         <div class="node-wrap-box"></div>
                         <div class="add-node-btn-box">
-                          <div class="add-node-btn"> <button>+</button>
+                          <div class="add-node-btn">
+                            <button>+</button>
                           </div>
                         </div>
                       </div>
@@ -52,30 +56,33 @@
                       <div class="condition-node">
                         <div class="condition-node-box">
                           <div class="auto-judge"></div>
-                          <div class="add-node-btn"> <button>+</button>
+                          <div class="add-node-btn">
+                            <button>+</button>
                           </div>
                         </div>
                       </div>
                       <div class="node-wrap">
                         <div class="node-wrap-box"></div>
                         <div class="add-node-btn-box">
-                          <div class="add-node-btn"> <button>+</button>
+                          <div class="add-node-btn">
+                            <button>+</button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
                 <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
+                  <div class="add-node-btn">
+                    <button>+</button>
                   </div>
                 </div>
               </div>
               <div class="node-wrap">
                 <div class="node-wrap-box"></div>
                 <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
+                  <div class="add-node-btn">
+                    <button>+</button>
                   </div>
                 </div>
               </div>
@@ -86,126 +93,135 @@
               <div class="condition-node">
                 <div class="condition-node-box">
                   <div class="auto-judge"></div>
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>      <div class="branch-wrap">
-        <div class="branch-box-wrap">
-          <div class="branch-box">
-            <button class="add-branch">添加条件</button>
-            <div class="col-box">
-              <div class="top-left-cover-line"></div>
-              <div class="bottom-left-cover-line"></div>
-              <div class="condition-node">
-                <div class="condition-node-box">
-                  <div class="auto-judge"></div>
-                  <div class="add-node-btn"> <button>+</button>
+                  <div class="add-node-btn">
+                    <button>+</button>
                   </div>
                 </div>
               </div>
-                    <div class="branch-wrap">
-        <div class="branch-box-wrap">
-          <div class="branch-box">
-            <button class="add-branch">添加条件</button>
-            <div class="col-box">
-              <div class="top-left-cover-line"></div>
-              <div class="bottom-left-cover-line"></div>
-              <div class="condition-node">
-                <div class="condition-node-box">
-                  <div class="auto-judge"></div>
-                  <div class="add-node-btn"> <button>+</button>
+              <div class="branch-wrap">
+                <div class="branch-box-wrap">
+                  <div class="branch-box">
+                    <button class="add-branch">添加条件</button>
+                    <div class="col-box">
+                      <div class="top-left-cover-line"></div>
+                      <div class="bottom-left-cover-line"></div>
+                      <div class="condition-node">
+                        <div class="condition-node-box">
+                          <div class="auto-judge"></div>
+                          <div class="add-node-btn">
+                            <button>+</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="branch-wrap">
+                        <div class="branch-box-wrap">
+                          <div class="branch-box">
+                            <button class="add-branch">添加条件</button>
+                            <div class="col-box">
+                              <div class="top-left-cover-line"></div>
+                              <div class="bottom-left-cover-line"></div>
+                              <div class="condition-node">
+                                <div class="condition-node-box">
+                                  <div class="auto-judge"></div>
+                                  <div class="add-node-btn">
+                                    <button>+</button>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="node-wrap">
+                                <div class="node-wrap-box"></div>
+                                <div class="add-node-btn-box">
+                                  <div class="add-node-btn">
+                                    <button>+</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-box">
+                              <div class="top-right-cover-line"></div>
+                              <div class="bottom-right-cover-line"></div>
+                              <div class="condition-node">
+                                <div class="condition-node-box">
+                                  <div class="auto-judge"></div>
+                                  <div class="add-node-btn">
+                                    <button>+</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="node-wrap">
+                                <div class="node-wrap-box"></div>
+                                <div class="add-node-btn-box">
+                                  <div class="add-node-btn">
+                                    <button>+</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="add-node-btn-box">
+                          <div class="add-node-btn">
+                            <button>+</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="node-wrap">
+                        <div class="node-wrap-box"></div>
+                        <div class="add-node-btn-box">
+                          <div class="add-node-btn">
+                            <button>+</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-box">
+                      <div class="top-right-cover-line"></div>
+                      <div class="bottom-right-cover-line"></div>
+                      <div class="condition-node">
+                        <div class="condition-node-box">
+                          <div class="auto-judge"></div>
+                          <div class="add-node-btn">
+                            <button>+</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="node-wrap">
+                        <div class="node-wrap-box"></div>
+                        <div class="add-node-btn-box">
+                          <div class="add-node-btn">
+                            <button>+</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-node-btn-box">
+                  <div class="add-node-btn">
+                    <button>+</button>
                   </div>
                 </div>
               </div>
-              
               <div class="node-wrap">
                 <div class="node-wrap-box"></div>
                 <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-box">
-              <div class="top-right-cover-line"></div>
-              <div class="bottom-right-cover-line"></div>
-              <div class="condition-node">
-                <div class="condition-node-box">
-                  <div class="auto-judge"></div>
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="node-wrap">
-                <div class="node-wrap-box"></div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
+                  <div class="add-node-btn">
+                    <button>+</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
         <div class="add-node-btn-box">
-          <div class="add-node-btn"> <button>+</button>
-          </div>
-        </div>
-      </div>
-              <div class="node-wrap">
-                <div class="node-wrap-box"></div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-box">
-              <div class="top-right-cover-line"></div>
-              <div class="bottom-right-cover-line"></div>
-              <div class="condition-node">
-                <div class="condition-node-box">
-                  <div class="auto-judge"></div>
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="node-wrap">
-                <div class="node-wrap-box"></div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="add-node-btn-box">
-          <div class="add-node-btn"> <button>+</button>
-          </div>
-        </div>
-      </div>
-              <div class="node-wrap">
-                <div class="node-wrap-box"></div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn"> <button>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="add-node-btn-box">
-          <div class="add-node-btn"> <button>+</button>
+          <div class="add-node-btn">
+            <button>+</button>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -334,7 +350,7 @@ export default {
         -webkit-box-align: center;
         align-items: center;
         position: relative;
-        
+        background: #fff;
         &::before {
           content: "";
           position: absolute;
@@ -346,7 +362,7 @@ export default {
           margin: auto;
           width: 2px;
           height: 100%;
-          background-color: #cacaca;
+          background-color: red;
         }
         .condition-node {
           display: inline-flex;
@@ -372,19 +388,6 @@ export default {
             background-color: #f5f5f7;
           }
         }
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: -1;
-          margin: auto;
-          width: 2px;
-          height: 100%;
-          background-color: #fb1313;
-        }
       }
     }
   }
@@ -404,6 +407,7 @@ export default {
     border: 1px solid blue;
     min-height: 72px;
     background-color: #f5f5f7;
+    z-index: 1;
   }
 }
 .top-left-cover-line,
