@@ -32,13 +32,7 @@ export default {
   components: {
     AddNode,
     ConditionNode
-    // BranchWrap: () => import("./BranchWrap.vue")
   },
-  // components: {
-  //   AddNode: () => import("./AddNode.vue"),
-  //   ConditionNode: () => import("./ConditionNode.vue"),
-  //   BranchWrap: () => import("./BranchWrap.vue")
-  // },
   render: function(createElement) {
     let childrenDom = [];
     // 判断左右的线段覆盖

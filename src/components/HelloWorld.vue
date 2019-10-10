@@ -18,131 +18,111 @@ export default {
         nodeId: "sid-startevent",
         type: "start",
         childNode: {
-          type: "route",
+          name: "UNKNOWN",
+          type: "approver",
           prevId: "sid-startevent",
-          nodeId: "fae5_84ed",
-          conditionNodes: [
-            {
-              name: "条件1",
-              type: "condition",
-              prevId: "fae5_84ed",
-              nodeId: "9fc5_9f65",
-              properties: {
-                conditions: [
-                  [
-                    {
-                      type: "dingtalk_actioner_range_condition",
-                      paramKey: "MoneyField-K1IM19Z9",
-                      paramLabel: "金额（元）",
-                      lowerBound: 3333,
-                      upperBound: "",
-                      isEmpty: false,
-                      valid: "valid"
-                    }
-                  ]
-                ]
-              },
-              childNode: {
-                type: "route",
-                prevId: "9fc5_9f65",
-                nodeId: "0cf9_512e",
-                conditionNodes: [
-                  {
-                    name: "条件1",
-                    type: "condition",
-                    prevId: "0cf9_512e",
-                    nodeId: "bded_c4c7",
-                    properties: {
-                      conditions: [
-                        [
-                          {
-                            type: "dingtalk_actioner_range_condition",
-                            paramKey: "MoneyField-K1IM19Z9",
-                            paramLabel: "金额（元）",
-                            lowerBound: 3233,
-                            upperBound: "",
-                            isEmpty: false,
-                            valid: "valid"
-                          }
-                        ]
-                      ]
-                    }
-                  },
-                  {
-                    name: "条件2",
-                    type: "condition",
-                    prevId: "0cf9_512e",
-                    nodeId: "5370_6d32",
-                    properties: { conditions: [] },
-                    childNode: {
-                      type: "route",
-                      prevId: "5370_6d32",
-                      nodeId: "167e_1a91",
-                      conditionNodes: [
-                        {
-                          name: "条件1",
-                          type: "condition",
-                          prevId: "167e_1a91",
-                          nodeId: "a229_fea2",
-                          properties: {
-                            conditions: [
-                              [
-                                {
-                                  type: "dingtalk_actioner_range_condition",
-                                  paramKey: "MoneyField-K1IM19Z9",
-                                  paramLabel: "金额（元）",
-                                  lowerBound: 4444,
-                                  upperBound: "",
-                                  isEmpty: false,
-                                  valid: "valid"
-                                }
-                              ]
-                            ]
-                          }
-                        },
-                        {
-                          name: "条件2",
-                          type: "condition",
-                          prevId: "167e_1a91",
-                          nodeId: "92d4_db0a",
-                          properties: { conditions: [] }
-                        }
-                      ],
-                      properties: {}
-                    }
-                  }
-                ],
-                properties: {}
+          nodeId: "839e_acb1",
+          properties: {
+            activateType: "ONE_BY_ONE",
+            agreeAll: false,
+            actionerRules: [
+              {
+                type: "target_management",
+                level: 1,
+                isEmpty: false,
+                autoUp: true
               }
-            },
-            {
-              name: "条件2",
-              type: "condition",
-              prevId: "fae5_84ed",
-              nodeId: "ca0b_2ffd",
-              properties: { conditions: [] },
-              childNode: {
-                name: "UNKNOWN",
-                type: "approver",
-                prevId: "ca0b_2ffd",
-                nodeId: "839e_acb1",
+            ],
+            noneActionerAction: "admin"
+          },
+          childNode: {
+            type: "route",
+            prevId: "839e_acb1",
+            nodeId: "bcac_3768",
+            conditionNodes: [
+              {
+                name: "条件1",
+                type: "condition",
+                prevId: "bcac_3768",
+                nodeId: "3ca6_7f3b",
                 properties: {
-                  activateType: "ONE_BY_ONE",
-                  agreeAll: false,
-                  actionerRules: [
-                    {
-                      type: "target_management",
-                      level: 1,
-                      isEmpty: false,
-                      autoUp: true
-                    }
-                  ],
-                  noneActionerAction: "admin"
+                  conditions: [
+                    [
+                      {
+                        type: "dingtalk_actioner_range_condition",
+                        paramKey: "MoneyField-K1IM19Z9",
+                        paramLabel: "金额（元）",
+                        lowerBound: 55,
+                        upperBound: "",
+                        isEmpty: false,
+                        valid: "valid"
+                      }
+                    ]
+                  ]
+                }
+              },
+              {
+                name: "条件2",
+                type: "condition",
+                prevId: "bcac_3768",
+                nodeId: "75da_1ec5",
+                properties: {
+                  conditions: [
+                    [
+                      {
+                        type: "dingtalk_actioner_range_condition",
+                        paramKey: "MoneyField-K1IM19Z9",
+                        paramLabel: "金额（元）",
+                        lowerBound: 666,
+                        upperBound: "",
+                        isEmpty: false,
+                        valid: "valid"
+                      }
+                    ]
+                  ]
                 }
               }
+            ],
+            properties: {},
+            childNode: {
+              type: "route",
+              prevId: "bcac_3768",
+              nodeId: "31ca_0912",
+              conditionNodes: [
+                {
+                  name: "条件1",
+                  type: "condition",
+                  prevId: "31ca_0912",
+                  nodeId: "4a24_c635",
+                  properties: {
+                    conditions: [
+                      [
+                        {
+                          type: "dingtalk_actioner_range_condition",
+                          paramKey: "MoneyField-K1IM19Z9",
+                          paramLabel: "金额（元）",
+                          lowerBound: 34,
+                          upperBound: "",
+                          isEmpty: false,
+                          valid: "valid"
+                        }
+                      ]
+                    ]
+                  }
+                },
+                {
+                  name: "条件2",
+                  type: "condition",
+                  prevId: "31ca_0912",
+                  nodeId: "0b6f_90ed",
+                  properties: {
+                    conditions: []
+                  }
+                }
+              ],
+              properties: {}
             }
-          ],
-          properties: {}
+          }
         }
       }
     };
