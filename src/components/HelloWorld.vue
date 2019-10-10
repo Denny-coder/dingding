@@ -1,231 +1,152 @@
 <template>
   <div style="width: 100%;">
-    <button @click="add">增加</button>
-    <div class="box-scale">
-      <div class="node-wrap">
-        <div class="node-wrap-box"></div>
-        <div class="add-node-btn-box">
-          <div class="add-node-btn">
-            <button>+</button>
-          </div>
-        </div>
-      </div>
-      <div class="branch-wrap">
-        <div class="branch-box-wrap">
-          <div class="branch-box">
-            <button class="add-branch">添加条件</button>
-            <div class="col-box">
-              <div class="top-left-cover-line"></div>
-              <div class="bottom-left-cover-line"></div>
-              <div class="condition-node">
-                <div class="condition-node-box">
-                  <div class="auto-judge"></div>
-                  <div class="add-node-btn">
-                    <button>+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="branch-wrap">
-                <div class="branch-box-wrap">
-                  <div class="branch-box">
-                    <button class="add-branch">添加条件</button>
-                    <div class="col-box">
-                      <div class="top-left-cover-line"></div>
-                      <div class="bottom-left-cover-line"></div>
-                      <div class="condition-node">
-                        <div class="condition-node-box">
-                          <div class="auto-judge"></div>
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="node-wrap">
-                        <div class="node-wrap-box"></div>
-                        <div class="add-node-btn-box">
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-box">
-                      <div class="top-right-cover-line"></div>
-                      <div class="bottom-right-cover-line"></div>
-                      <div class="condition-node">
-                        <div class="condition-node-box">
-                          <div class="auto-judge"></div>
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="node-wrap">
-                        <div class="node-wrap-box"></div>
-                        <div class="add-node-btn-box">
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn">
-                    <button>+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="node-wrap">
-                <div class="node-wrap-box"></div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn">
-                    <button>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-box">
-              <div class="top-right-cover-line"></div>
-              <div class="bottom-right-cover-line"></div>
-              <div class="condition-node">
-                <div class="condition-node-box">
-                  <div class="auto-judge"></div>
-                  <div class="add-node-btn">
-                    <button>+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="branch-wrap">
-                <div class="branch-box-wrap">
-                  <div class="branch-box">
-                    <button class="add-branch">添加条件</button>
-                    <div class="col-box">
-                      <div class="top-left-cover-line"></div>
-                      <div class="bottom-left-cover-line"></div>
-                      <div class="condition-node">
-                        <div class="condition-node-box">
-                          <div class="auto-judge"></div>
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="branch-wrap">
-                        <div class="branch-box-wrap">
-                          <div class="branch-box">
-                            <button class="add-branch">添加条件</button>
-                            <div class="col-box">
-                              <div class="top-left-cover-line"></div>
-                              <div class="bottom-left-cover-line"></div>
-                              <div class="condition-node">
-                                <div class="condition-node-box">
-                                  <div class="auto-judge"></div>
-                                  <div class="add-node-btn">
-                                    <button>+</button>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="node-wrap">
-                                <div class="node-wrap-box"></div>
-                                <div class="add-node-btn-box">
-                                  <div class="add-node-btn">
-                                    <button>+</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-box">
-                              <div class="top-right-cover-line"></div>
-                              <div class="bottom-right-cover-line"></div>
-                              <div class="condition-node">
-                                <div class="condition-node-box">
-                                  <div class="auto-judge"></div>
-                                  <div class="add-node-btn">
-                                    <button>+</button>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="node-wrap">
-                                <div class="node-wrap-box"></div>
-                                <div class="add-node-btn-box">
-                                  <div class="add-node-btn">
-                                    <button>+</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="add-node-btn-box">
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="node-wrap">
-                        <div class="node-wrap-box"></div>
-                        <div class="add-node-btn-box">
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-box">
-                      <div class="top-right-cover-line"></div>
-                      <div class="bottom-right-cover-line"></div>
-                      <div class="condition-node">
-                        <div class="condition-node-box">
-                          <div class="auto-judge"></div>
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="node-wrap">
-                        <div class="node-wrap-box"></div>
-                        <div class="add-node-btn-box">
-                          <div class="add-node-btn">
-                            <button>+</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn">
-                    <button>+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="node-wrap">
-                <div class="node-wrap-box"></div>
-                <div class="add-node-btn-box">
-                  <div class="add-node-btn">
-                    <button>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="add-node-btn-box">
-          <div class="add-node-btn">
-            <button>+</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Branch :branchData="branchNodeList"></Branch>
   </div>
 </template>
 
 <script>
+import Branch from "./Branch/Index";
+
 export default {
+  components: {
+    Branch
+  },
+  data() {
+    return {
+      branchNodeList: {
+        name: "发起人",
+        nodeId: "sid-startevent",
+        type: "start",
+        childNode: {
+          type: "route",
+          prevId: "sid-startevent",
+          nodeId: "fae5_84ed",
+          conditionNodes: [
+            {
+              name: "条件1",
+              type: "condition",
+              prevId: "fae5_84ed",
+              nodeId: "9fc5_9f65",
+              properties: {
+                conditions: [
+                  [
+                    {
+                      type: "dingtalk_actioner_range_condition",
+                      paramKey: "MoneyField-K1IM19Z9",
+                      paramLabel: "金额（元）",
+                      lowerBound: 3333,
+                      upperBound: "",
+                      isEmpty: false,
+                      valid: "valid"
+                    }
+                  ]
+                ]
+              },
+              childNode: {
+                type: "route",
+                prevId: "9fc5_9f65",
+                nodeId: "0cf9_512e",
+                conditionNodes: [
+                  {
+                    name: "条件1",
+                    type: "condition",
+                    prevId: "0cf9_512e",
+                    nodeId: "bded_c4c7",
+                    properties: {
+                      conditions: [
+                        [
+                          {
+                            type: "dingtalk_actioner_range_condition",
+                            paramKey: "MoneyField-K1IM19Z9",
+                            paramLabel: "金额（元）",
+                            lowerBound: 3233,
+                            upperBound: "",
+                            isEmpty: false,
+                            valid: "valid"
+                          }
+                        ]
+                      ]
+                    }
+                  },
+                  {
+                    name: "条件2",
+                    type: "condition",
+                    prevId: "0cf9_512e",
+                    nodeId: "5370_6d32",
+                    properties: { conditions: [] },
+                    childNode: {
+                      type: "route",
+                      prevId: "5370_6d32",
+                      nodeId: "167e_1a91",
+                      conditionNodes: [
+                        {
+                          name: "条件1",
+                          type: "condition",
+                          prevId: "167e_1a91",
+                          nodeId: "a229_fea2",
+                          properties: {
+                            conditions: [
+                              [
+                                {
+                                  type: "dingtalk_actioner_range_condition",
+                                  paramKey: "MoneyField-K1IM19Z9",
+                                  paramLabel: "金额（元）",
+                                  lowerBound: 4444,
+                                  upperBound: "",
+                                  isEmpty: false,
+                                  valid: "valid"
+                                }
+                              ]
+                            ]
+                          }
+                        },
+                        {
+                          name: "条件2",
+                          type: "condition",
+                          prevId: "167e_1a91",
+                          nodeId: "92d4_db0a",
+                          properties: { conditions: [] }
+                        }
+                      ],
+                      properties: {}
+                    }
+                  }
+                ],
+                properties: {}
+              }
+            },
+            {
+              name: "条件2",
+              type: "condition",
+              prevId: "fae5_84ed",
+              nodeId: "ca0b_2ffd",
+              properties: { conditions: [] },
+              childNode: {
+                name: "UNKNOWN",
+                type: "approver",
+                prevId: "ca0b_2ffd",
+                nodeId: "839e_acb1",
+                properties: {
+                  activateType: "ONE_BY_ONE",
+                  agreeAll: false,
+                  actionerRules: [
+                    {
+                      type: "target_management",
+                      level: 1,
+                      isEmpty: false,
+                      autoUp: true
+                    }
+                  ],
+                  noneActionerAction: "admin"
+                }
+              }
+            }
+          ],
+          properties: {}
+        }
+      }
+    };
+  },
   name: "HelloWorld",
   props: {
     msg: String
