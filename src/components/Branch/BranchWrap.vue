@@ -1,22 +1,4 @@
-<template>
-  <div class="branch-wrap">
-    <div class="branch-box-wrap">
-      <div class="branch-box">
-        <button class="add-branch">添加条件</button>
-        <ColBox
-          v-for="(item, index) in branchWrapData"
-          :key="item.name"
-          :isRight="index===branchWrapData.length-1"
-          :isLeft="index===0"
-          :colBoxData="item"
-        ></ColBox>
-      </div>
-    </div>
-  </div>
-</template>
 <script>
-import ColBox from "./ColBox";
-
 export default {
   name: "BranchWrap",
   props: {
@@ -27,8 +9,14 @@ export default {
       }
     }
   },
-  components: {
-    ColBox
+  beforeCreate: function() {
+    this.$options.components.ColBox = require("./ColBox.vue").default;
+    this.$options.components.AddNodebtnBox = require("./AddNodebtnBox.vue").default;
+  },
+  methods: {
+    addBranch(data) {
+      console.log(data);
+    }
   },
   render(createElement) {
     let domList = [
@@ -37,6 +25,11 @@ export default {
         {
           attrs: {
             class: "add-branch"
+          },
+          on: {
+            click: () => {
+              this.addBranch(this.branchWrapData);
+            }
           }
         },
         "添加条件"
@@ -45,9 +38,6 @@ export default {
     this.branchWrapData.forEach((item, index) => {
       domList = domList.concat([
         createElement("ColBox", {
-          attrs: {
-            class: "branch-box"
-          },
           props: {
             isRight: index === this.branchWrapData.length - 1,
             isLeft: index === 0,
@@ -64,23 +54,32 @@ export default {
           class: "branch-wrap"
         }
       },
-      createElement(
-        "div",
-        {
-          attrs: {
-            class: "branch-box-wrap"
-          }
-        },
+      [
         createElement(
           "div",
           {
             attrs: {
-              class: "branch-box"
+              class: "branch-box-wrap"
             }
           },
-          domList
+          [
+            createElement(
+              "div",
+              {
+                attrs: {
+                  class: "branch-box"
+                }
+              },
+              domList
+            ),
+            createElement("AddNodebtnBox", {
+              props: {
+                addNodebtnBoxData: this.branchWrapData
+              }
+            })
+          ]
         )
-      )
+      ]
     );
   }
 };

@@ -1,8 +1,8 @@
+
 <script>
 import AddNode from "./AddNode";
 import ConditionNode from "./ConditionNode";
 import BranchWrap from "./BranchWrap";
-
 export default {
   name: "ColBox",
   props: {

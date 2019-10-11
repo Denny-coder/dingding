@@ -3,7 +3,7 @@
     <div class="condition-node-box">
       <div class="auto-judge">{{conditionNodeData.name}}</div>
       <div class="add-node-btn">
-        <button>+</button>
+        <button @click="printData">+</button>
       </div>
     </div>
   </div>
@@ -17,6 +17,11 @@ export default {
       default: () => {
         return {};
       }
+    }
+  },
+  methods: {
+    printData() {
+      console.log(this.conditionNodeData);
     }
   }
 };

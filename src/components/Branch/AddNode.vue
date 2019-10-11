@@ -3,7 +3,7 @@
     <div class="node-wrap-box">{{addData.name}}</div>
     <div class="add-node-btn-box">
       <div class="add-node-btn">
-        <button>+</button>
+        <button @click="printData">+</button>
       </div>
     </div>
   </div>
@@ -13,10 +13,15 @@ export default {
   name: "AddNode",
   props: {
     addData: {
-     type: Object,
+      type: Object,
       default: () => {
         return {};
       }
+    }
+  },
+  methods: {
+    printData() {
+      console.log(this.addData);
     }
   }
 };

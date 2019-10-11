@@ -21,7 +21,7 @@ export default {
           name: "UNKNOWN",
           type: "approver",
           prevId: "sid-startevent",
-          nodeId: "839e_acb1",
+          nodeId: "b5f2_d0fe",
           properties: {
             activateType: "ONE_BY_ONE",
             agreeAll: false,
@@ -37,30 +37,9 @@ export default {
           },
           childNode: {
             type: "route",
-            prevId: "839e_acb1",
+            prevId: "b5f2_d0fe",
             nodeId: "bcac_3768",
             conditionNodes: [
-              {
-                name: "条件1",
-                type: "condition",
-                prevId: "bcac_3768",
-                nodeId: "3ca6_7f3b",
-                properties: {
-                  conditions: [
-                    [
-                      {
-                        type: "dingtalk_actioner_range_condition",
-                        paramKey: "MoneyField-K1IM19Z9",
-                        paramLabel: "金额（元）",
-                        lowerBound: 55,
-                        upperBound: "",
-                        isEmpty: false,
-                        valid: "valid"
-                      }
-                    ]
-                  ]
-                }
-              },
               {
                 name: "条件2",
                 type: "condition",
@@ -80,6 +59,137 @@ export default {
                       }
                     ]
                   ]
+                },
+                childNode: {
+                  type: "route",
+                  prevId: "75da_1ec5",
+                  nodeId: "7723_bc74",
+                  conditionNodes: [
+                    {
+                      name: "条件1",
+                      type: "condition",
+                      prevId: "7723_bc74",
+                      nodeId: "d66a_48a8",
+                      properties: {
+                        conditions: [
+                          [
+                            {
+                              type: "dingtalk_actioner_range_condition",
+                              paramKey: "MoneyField-K1IM19Z9",
+                              paramLabel: "金额（元）",
+                              lowerBound: 3444,
+                              upperBound: "",
+                              isEmpty: false,
+                              valid: "valid"
+                            }
+                          ]
+                        ]
+                      },
+                      childNode: {
+                        name: "UNKNOWN",
+                        type: "approver",
+                        prevId: "d66a_48a8",
+                        nodeId: "6006_7b28",
+                        properties: {
+                          activateType: "ONE_BY_ONE",
+                          agreeAll: false,
+                          actionerRules: [
+                            {
+                              type: "target_management",
+                              level: 1,
+                              isEmpty: false,
+                              autoUp: true
+                            }
+                          ],
+                          noneActionerAction: "admin"
+                        }
+                      }
+                    },
+                    {
+                      name: "条件2",
+                      type: "condition",
+                      prevId: "7723_bc74",
+                      nodeId: "7bf2_33ec",
+                      properties: { conditions: [] }
+                    }
+                  ],
+                  properties: {},
+                  childNode: {
+                    name: "UNKNOWN",
+                    type: "approver",
+                    prevId: "7723_bc74",
+                    nodeId: "370e_0363",
+                    properties: {
+                      activateType: "ONE_BY_ONE",
+                      agreeAll: false,
+                      actionerRules: [
+                        {
+                          type: "target_management",
+                          level: 1,
+                          isEmpty: false,
+                          autoUp: true
+                        }
+                      ],
+                      noneActionerAction: "admin"
+                    }
+                  }
+                }
+              },
+              {
+                name: "条件1",
+                type: "condition",
+                prevId: "bcac_3768",
+                nodeId: "3ca6_7f3b",
+                properties: {
+                  conditions: [
+                    [
+                      {
+                        type: "dingtalk_actioner_range_condition",
+                        paramKey: "MoneyField-K1IM19Z9",
+                        paramLabel: "金额（元）",
+                        lowerBound: 55,
+                        upperBound: "",
+                        isEmpty: false,
+                        valid: "valid"
+                      }
+                    ]
+                  ]
+                },
+                childNode: {
+                  type: "route",
+                  prevId: "3ca6_7f3b",
+                  nodeId: "7ac2_7ad3",
+                  conditionNodes: [
+                    {
+                      name: "条件1",
+                      type: "condition",
+                      prevId: "7ac2_7ad3",
+                      nodeId: "1c00_8182",
+                      properties: {
+                        conditions: [
+                          [
+                            {
+                              type: "dingtalk_actioner_range_condition",
+                              paramKey: "MoneyField-K1IM19Z9",
+                              paramLabel: "金额（元）",
+                              lowerBound: 333,
+                              upperBound: "",
+                              isEmpty: false,
+                              valid: "valid"
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    {
+                      name: "条件2",
+                      type: "condition",
+                      prevId: "7ac2_7ad3",
+                      nodeId: "4c25_c5f8",
+                      properties: { conditions: [[]] }
+                    }
+                  ],
+                  properties: {}
                 }
               }
             ],
@@ -87,13 +197,13 @@ export default {
             childNode: {
               type: "route",
               prevId: "bcac_3768",
-              nodeId: "31ca_0912",
+              nodeId: "0c98_055d",
               conditionNodes: [
                 {
                   name: "条件1",
                   type: "condition",
-                  prevId: "31ca_0912",
-                  nodeId: "4a24_c635",
+                  prevId: "0c98_055d",
+                  nodeId: "dfc3_7c83",
                   properties: {
                     conditions: [
                       [
@@ -101,7 +211,7 @@ export default {
                           type: "dingtalk_actioner_range_condition",
                           paramKey: "MoneyField-K1IM19Z9",
                           paramLabel: "金额（元）",
-                          lowerBound: 34,
+                          lowerBound: 555,
                           upperBound: "",
                           isEmpty: false,
                           valid: "valid"
@@ -113,11 +223,9 @@ export default {
                 {
                   name: "条件2",
                   type: "condition",
-                  prevId: "31ca_0912",
-                  nodeId: "0b6f_90ed",
-                  properties: {
-                    conditions: []
-                  }
+                  prevId: "0c98_055d",
+                  nodeId: "844a_0cb4",
+                  properties: { conditions: [] }
                 }
               ],
               properties: {}
@@ -146,23 +254,32 @@ export default {
 
 // }
 .box-scale {
-  min-width: min-content;
+  display: inline-block;
+  position: relative;
   width: 100%;
-  display: flex;
+  padding: 54.5px 0;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+  background-color: #fff;
   .add-node-btn-box {
-    width: 220px;
+    width: 240px;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    position: relative;
     -ms-flex-negative: 0;
     flex-shrink: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    position: relative;
 
     &::before {
       content: "";
@@ -171,11 +288,10 @@ export default {
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: -1;
       margin: auto;
       width: 2px;
       height: 100%;
-      background-color: #fb1313;
+      background-color: red;
     }
   }
   .add-node-btn {
@@ -189,27 +305,40 @@ export default {
     -webkit-box-flex: 1;
     flex-grow: 1;
     button {
+      color: #fff;
+      outline: none;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       width: 30px;
       height: 30px;
+      background: #3296fa;
+      border-radius: 50%;
+      position: relative;
+      border: none;
+      cursor: pointer;
+      line-height: 30px;
+      -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
   }
 }
 .branch-wrap {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-shrink: 0;
+  display: inline-flex;
   width: 100%;
-
   .branch-box-wrap {
     display: flex;
-    overflow: visible;
-    min-height: 180px;
-    height: auto;
-    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-height: 270px;
+    width: 100%;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
     .branch-box {
       display: flex;
       overflow: visible;
@@ -219,7 +348,6 @@ export default {
       border-top: 2px solid red;
       position: relative;
       margin-top: 15px;
-      width: 100%;
       .add-branch {
         border: none;
         outline: none;
@@ -278,6 +406,18 @@ export default {
           position: relative;
           display: inline-flex;
           flex-direction: column;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 2px;
+            height: 100%;
+            background-color: red;
+          }
           .auto-judge {
             position: relative;
             width: 220px;
@@ -294,21 +434,37 @@ export default {
   }
 }
 .node-wrap {
-  padding: 0 50px;
-  width: 100%;
   display: inline-flex;
+  width: 100%;
   flex-direction: column;
-  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
-  flex-shrink: 0;
-  flex-grow: 1;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  padding: 0 50px;
+  position: relative;
   .node-wrap-box {
-    width: 220px;
     border: 1px solid blue;
     min-height: 72px;
     background-color: #f5f5f7;
-    z-index: 1;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    width: 220px;
+    min-height: 72px;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
 .top-left-cover-line,
