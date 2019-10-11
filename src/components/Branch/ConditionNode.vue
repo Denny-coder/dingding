@@ -11,6 +11,7 @@
 <script>
 export default {
   name: "ConditionNode",
+  inject: ["$bus"],
   props: {
     conditionNodeData: {
       type: Object,

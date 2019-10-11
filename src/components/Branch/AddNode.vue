@@ -11,6 +11,7 @@
 <script>
 export default {
   name: "AddNode",
+  inject: ["$bus"],
   props: {
     addData: {
       type: Object,
@@ -21,7 +22,12 @@ export default {
   },
   methods: {
     printData() {
-      console.log(this.addData);
+      const info = confirm("确定是添加审核节点，取消是添加条件节点");
+      this.$bus.$emit("treeChange", {
+        type: "add",
+        nodeType:info,
+        nodeId: this.addData.nodeId
+      });
     }
   }
 };

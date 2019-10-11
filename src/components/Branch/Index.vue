@@ -1,11 +1,22 @@
 <script>
 import BranchWrap from "./BranchWrap";
 import AddNode from "./AddNode";
-import StartNode from "./StartNode";
-import AddNodebtnBox from "./AddNodebtnBox";
+import { MultiwayTree } from "./MultiwayTree.js";
+import Vue from "vue";
 
 export default {
   name: "BranchIndex",
+  data() {
+    return {
+      bus: new Vue(),
+      nodeTree: null
+    };
+  },
+  provide() {
+    return {
+      $bus: this.bus
+    };
+  },
   props: {
     branchData: {
       type: Object,
@@ -13,21 +24,37 @@ export default {
     }
   },
   components: {
-    AddNodebtnBox,
-    AddNode,
-    StartNode
+    AddNode
   },
   beforeCreate: function() {
     this.$options.components.BranchWrap = require("./BranchWrap.vue").default;
+  },
+  created() {
+    this.nodeTree = new MultiwayTree(this.branchData, this);
+    console.log("this.branchData", this.branchData);
+    console.log(this.nodeTree);
+    this.bus.$on("treeChange", data => {
+      console.log(data);
+      const newTree = this.nodeTree.add(
+        {
+          nodeId: new Date().toLocaleTimeString(),
+          data: data
+        },
+        data.nodeId,
+        this.nodeTree.traverseBF
+      );
+      console.log("newTree", newTree._root);
+      this.$emit("update:branchData", newTree._root);
+    });
   },
   render(createElement) {
     function getDom(nodeData) {
       let domLoopList = [];
       if (nodeData.type === "start") {
         domLoopList = domLoopList.concat([
-          createElement("StartNode", {
+          createElement("AddNode", {
             props: {
-              startNodeData: nodeData
+              addData: nodeData
             }
           })
         ]);
@@ -54,7 +81,8 @@ export default {
         domLoopList = domLoopList.concat([
           createElement("BranchWrap", {
             props: {
-              branchWrapData: nodeData.conditionNodes
+              branchWrapData: nodeData.conditionNodes,
+              parentBranchWrapData: nodeData
             }
           })
         ]);
@@ -65,7 +93,6 @@ export default {
       return domLoopList;
     }
     const domList = getDom(this.branchData);
-    console.log("domList", domList);
     return createElement(
       "div",
       {

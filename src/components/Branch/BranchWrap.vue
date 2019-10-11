@@ -7,6 +7,12 @@ export default {
       default: () => {
         return [];
       }
+    },
+    parentBranchWrapData: {
+      type: Object,
+      default: () => {
+        return {};
+      }
     }
   },
   beforeCreate: function() {
@@ -28,7 +34,7 @@ export default {
           },
           on: {
             click: () => {
-              this.addBranch(this.branchWrapData);
+              this.addBranch(this.parentBranchWrapData);
             }
           }
         },
@@ -74,7 +80,8 @@ export default {
             ),
             createElement("AddNodebtnBox", {
               props: {
-                addNodebtnBoxData: this.branchWrapData
+                addNodebtnBoxData: this.branchWrapData,
+                parentAddNodebtnBoxData: this.parentBranchWrapData
               }
             })
           ]
