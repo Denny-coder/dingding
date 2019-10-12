@@ -40,7 +40,7 @@ export default {
         data.nodeId,
         this.nodeTree.traverseBF
       );
-      // console.log(newTree._root)
+      console.log(newTree._root)
       this.$emit("update:branchData", newTree._root);
     });
     this.bus.$on("treeDelNode", data => {

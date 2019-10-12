@@ -140,29 +140,38 @@ export class MultiwayTree {
         let childToRemove = null
         const parent = this.findParent(fromData, traversal)
         if (parent) {
-            if (!parent.conditionNodes) {
-                return
-            }
-            const len = parent.conditionNodes.length
-            const index = parent.conditionNodes.findIndex(item => item.nodeId === nodeId)
-            if (index >= 0) {
-                if (len > 2) {
-                    parent.conditionNodes.splice(index, 1)
-                } else if (len === 2) {
-                    const conditionNodes = parent.conditionNodes.filter(item => {
-                        return item.childNode && item.nodeId !== nodeId
-                    })
-                    const grandfatherNode = this.findParent(parent.prevId, traversal)
-                    this.context.$delete(grandfatherNode, 'childNode')
-                    if (conditionNodes.length && conditionNodes[0].childNode) {
-                        conditionNodes[0].childNode.prevId = grandfatherNode.nodeId
-                        grandfatherNode.childNode = conditionNodes[0].childNode
+            if (parent.conditionNodes) {
+                const len = parent.conditionNodes.length
+                const index = parent.conditionNodes.findIndex(item => item.nodeId === nodeId)
+                if (index >= 0) {
+                    if (len > 2) {
+                        parent.conditionNodes.splice(index, 1)
+                    } else if (len === 2) {
+                        const conditionNodes = parent.conditionNodes.filter(item => {
+                            return item.childNode && item.nodeId !== nodeId
+                        })
+                        const grandfatherNode = this.findParent(parent.prevId, traversal)
+                        this.context.$delete(grandfatherNode, 'childNode')
+                        if (conditionNodes.length && conditionNodes[0].childNode) {
+                            conditionNodes[0].childNode.prevId = grandfatherNode.nodeId
+                            this.context.$set(grandfatherNode, 'childNode', conditionNodes[0].childNode)
+
+                        }
+                        this.context.$delete(grandfatherNode, 'conditionNodes')
                     }
-                    this.context.$delete(grandfatherNode, 'conditionNodes')
+                } else {
+                    throw new Error('AddNode to remove does not exist.');
                 }
-            } else {
-                throw new Error('AddNode to remove does not exist.');
             }
+            if (parent.childNode.nodeId === nodeId) {
+                if (parent.childNode.childNode) {
+                    parent.childNode.childNode.prevId=parent.nodeId
+                    this.context.$set(parent, 'childNode', parent.childNode.childNode)
+                } else {
+                    this.context.$delete(parent, 'childNode')
+                }
+            }
+
         } else {
             throw new Error('Parent does not exist.');
         }
