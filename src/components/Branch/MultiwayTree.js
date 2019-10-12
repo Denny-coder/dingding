@@ -1,16 +1,16 @@
 class AddNode {
-    constructor(nodeId) {
+    constructor(nodeId, prevId) {
         this.nodeId = nodeId;
         this.name = nodeId;
+        this.prevId = prevId
         this.type = 'approver';
-        this.parent = null;
     }
 }
 class ConditionNode {
-    constructor(nodeId) {
+    constructor(nodeId, prevId) {
         this.nodeId = nodeId;
         this.type = 'route';
-        this.parent = null;
+        this.prevId = prevId
         this.conditionNodes = [
             {
                 "name": new Date().toLocaleTimeString() + '-1-条件',
@@ -29,11 +29,11 @@ class ConditionNode {
     }
 }
 class ConditionNodeSingle {
-    constructor(nodeId, count) {
+    constructor(nodeId, count, prevId) {
         return {
             "name": `${new Date().toLocaleTimeString()}-${count}-条件`,
             "type": "condition",
-            "prevId": nodeId,
+            "prevId": prevId,
             "nodeId": `${new Date().toLocaleTimeString()}-${count}`,
         }
 
@@ -87,34 +87,37 @@ export class MultiwayTree {
     contains(callback, traversal) {
         traversal.call(this, callback);
     }
-    add(option, toData, traversal) {
-        if (this._root === null) {
-            this._root = node;
-            return this;
-        }
-
-
+    findParent(nodeId, traversal) {
         let parent = null,
             callback = function (node) {
-                if (node.nodeId === toData) {
+                if (node.nodeId === nodeId) {
                     parent = node;
                     return true;
                 }
             };
         this.contains(callback, traversal);
+        return parent
+    }
+    add(option, toData, traversal) {
+        if (this._root === null) {
+            this._root = node;
+            return this;
+        }
+        const parent = this.findParent(toData, traversal)
         let node
         if (parent) {
-
             // 确定有父节点再去创建子节点
             // true 是 审核或抄送节点 false 是 条件节点
             if (option.data.nodeType) {
-                node = new AddNode(option.nodeId)
+                node = new AddNode(option.nodeId, parent.nodeId)
             } else if (option.data.type !== 'conditionNode') {
-                node = new ConditionNode(option.nodeId)
+                node = new ConditionNode(option.nodeId, parent.nodeId)
             }
-            if (parent.childNode&&option.data.type !== 'conditionNode') {
+            if (parent.childNode && option.data.type !== 'conditionNode') {
                 // 如果在当前节点下增加审核节点，则当前节点下的所有子节点放置到条件1下
+                parent.childNode.prevId = node.nodeId
                 if (node.conditionNodes) {
+                    // 变更其子元素的childNode
                     node.conditionNodes[0].childNode = parent.childNode
                 } else {
                     node.childNode = parent.childNode;
@@ -122,10 +125,10 @@ export class MultiwayTree {
             }
             if (node) {
                 this.context.$set(parent, 'childNode', node)
-                node.parent = parent;
+                // node.parent = parent;
             }
             if (option.data.type === 'conditionNode') {
-                node = new ConditionNodeSingle(option.nodeId, parent.conditionNodes.length + 1)
+                node = new ConditionNodeSingle(option.nodeId, parent.conditionNodes.length + 1, parent.nodeId)
                 parent.conditionNodes.push(node)
             }
             return this;
@@ -134,21 +137,31 @@ export class MultiwayTree {
         }
     }
     remove(nodeId, fromData, traversal) {
-        let parent = null,
-            childToRemove = null,
-            callback = function (node) {
-                if (node.nodeId === fromData) {
-                    parent = node;
-                    return true;
-                }
-            };
-        this.contains(callback, traversal);
+        let childToRemove = null
+        const parent = this.findParent(fromData, traversal)
         if (parent) {
-            let index = this._findIndex(parent.childNode, nodeId);
-            if (index < 0) {
-                throw new Error('AddNode to remove does not exist.');
+            if (!parent.conditionNodes) {
+                return
+            }
+            const len = parent.conditionNodes.length
+            const index = parent.conditionNodes.findIndex(item => item.nodeId === nodeId)
+            if (index >= 0) {
+                if (len > 2) {
+                    parent.conditionNodes.splice(index, 1)
+                } else if (len === 2) {
+                    const conditionNodes = parent.conditionNodes.filter(item => {
+                        return item.childNode && item.nodeId !== nodeId
+                    })
+                    const grandfatherNode = this.findParent(parent.prevId, traversal)
+                    this.context.$delete(grandfatherNode, 'childNode')
+                    if (conditionNodes.length && conditionNodes[0].childNode) {
+                        conditionNodes[0].childNode.prevId = grandfatherNode.nodeId
+                        grandfatherNode.childNode = conditionNodes[0].childNode
+                    }
+                    this.context.$delete(grandfatherNode, 'conditionNodes')
+                }
             } else {
-                childToRemove = parent.childNode.splice(index, 1);
+                throw new Error('AddNode to remove does not exist.');
             }
         } else {
             throw new Error('Parent does not exist.');

@@ -55,6 +55,20 @@ export default {
   min-width: -moz-min-content;
   min-width: min-content;
   background-color: #fff;
+  .del-node {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background: red;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .node-wrap {
+    .del-node {
+      background: #3296fa;
+    }
+  }
   .add-node-btn-box {
     width: 240px;
     display: -webkit-inline-box;

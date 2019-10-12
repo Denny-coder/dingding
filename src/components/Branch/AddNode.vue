@@ -1,6 +1,9 @@
 <template>
   <div class="node-wrap">
-    <div class="node-wrap-box">{{addData.name}}</div>
+    <div class="node-wrap-box">{{addData.name}} <span
+        class="del-node"
+        @click="delNode"
+      >-</span></div>
     <div class="add-node-btn-box">
       <div class="add-node-btn">
         <button @click="printData">+</button>
@@ -25,8 +28,14 @@ export default {
       const info = confirm("确定是添加审核节点，取消是添加条件节点");
       this.$bus.$emit("treeChange", {
         type: "add",
-        nodeType:info,
+        nodeType: info,
         nodeId: this.addData.nodeId
+      });
+    },
+    delNode() {
+      this.$bus.$emit("treeDelNode", {
+        type: "add",
+        currentNode: this.addData
       });
     }
   }

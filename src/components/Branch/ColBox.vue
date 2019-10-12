@@ -12,6 +12,12 @@ export default {
         return {};
       }
     },
+    colBoxParentData: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
     isRight: {
       type: Boolean,
       default: false
@@ -49,13 +55,15 @@ export default {
         }
       })
     );
-    function getDom(nodeData) {
+
+    function getDom(nodeData, parentNode) {
       let domList = [];
       if (nodeData.type === "condition") {
         domList = domList.concat([
           createElement("ConditionNode", {
             props: {
-              conditionNodeData: nodeData
+              conditionNodeData: nodeData,
+              parentNode
             }
           })
         ]);
@@ -80,11 +88,12 @@ export default {
         ]);
       }
       if (nodeData.childNode) {
-        domList = domList.concat(getDom(nodeData.childNode));
+        domList = domList.concat(getDom(nodeData.childNode, parentNode));
       }
       return domList;
     }
-    const arr = getDom(this.colBoxData);
+
+    const arr = getDom(this.colBoxData, this.colBoxParentData);
     childrenDom = childrenDom.concat(arr);
     return createElement(
       "div",

@@ -39,7 +39,6 @@
             //广度优先遍历
             traverseBF(callback) {
                 let queue = [], found = false;
-                debugger
 
                 queue.push(this._root);
                 let currentNode = queue.shift();
@@ -112,14 +111,21 @@
         var tree = new MultiwayTree();
         tree.add('a')
             .add('b', 'a', tree.traverseBF)
-        .add('c', 'b', tree.traverseBF)
-        // .add('d', 'a', tree.traverseBF)
-        // .add('e', 'b', tree.traverseBF)
-        // .add('f', 'b', tree.traverseBF)
-        // .add('g', 'c', tree.traverseBF)
-        // .add('h', 'c', tree.traverseBF)
-        // .add('i', 'd', tree.traverseBF);
+            .add('c', 'b', tree.traverseBF)
+            .add('d', 'a', tree.traverseBF)
+            .add('e', 'b', tree.traverseBF)
+            .add('f', 'b', tree.traverseBF)
+            .add('g', 'c', tree.traverseBF)
+            .add('h', 'c', tree.traverseBF)
+            .add('i', 'd', tree.traverseBF)
+            .add('z', 'i', tree.traverseBF);
         console.log(tree)
+        tree.remove('i', 'd', tree.traverseBF);
+        // console.log(tree)
+
+        // tree.remove('b', 'a', tree.traverseBF);
+        // console.log(tree)
+
         // console.group('traverseDF');
         // tree.traverseDF(function (node) {
         //     console.log(node.nodeId);
@@ -148,7 +154,7 @@
         //     }
         // }, tree.traverseBF);
         // console.groupEnd('contains2');
-        // tree.remove('g', 'c', tree.traverseBF);
+        tree.remove('g', 'c', tree.traverseBF);
     </script>
 </body>
 

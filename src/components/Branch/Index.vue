@@ -40,14 +40,26 @@ export default {
         data.nodeId,
         this.nodeTree.traverseBF
       );
-      console.log('newTree._root',newTree._root)
+      // console.log(newTree._root)
       this.$emit("update:branchData", newTree._root);
+    });
+    this.bus.$on("treeDelNode", data => {
+      console.log({
+        nodeId: data.currentNode.nodeId,
+        prevId: data.currentNode.prevId
+      });
+      console.log(data.currentNode)
+      const newTree = this.nodeTree.remove(
+        data.currentNode.nodeId,
+        data.currentNode.prevId,
+        this.nodeTree.traverseBF
+      );
     });
   },
   render(createElement) {
     function getDom(nodeData, parentNode) {
       let domLoopList = [];
-      if (nodeData.type === "start") {
+      if (nodeData.type === "start" || nodeData.type === "approver") {
         domLoopList = domLoopList.concat([
           createElement("AddNode", {
             props: {
@@ -60,16 +72,8 @@ export default {
         domLoopList = domLoopList.concat([
           createElement("ConditionNode", {
             props: {
-              conditionNodeData: nodeData
-            }
-          })
-        ]);
-      }
-      if (nodeData.type === "approver") {
-        domLoopList = domLoopList.concat([
-          createElement("AddNode", {
-            props: {
-              addData: nodeData
+              conditionNodeData: nodeData,
+              parentNode
             }
           })
         ]);

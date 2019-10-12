@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     addBranch(data) {
-      console.log(data);
       this.$bus.$emit("treeChange", {
         type: "conditionNode",
         nodeType: false,
@@ -59,16 +58,13 @@ export default {
           props: {
             isRight: index === this.branchWrapData.length - 1,
             isLeft: index === 0,
-            colBoxData: item
+            colBoxData: item,
+            colBoxParentData: this.parentBranchWrapData
           },
           key: item.name
         })
       ]);
     });
-    // console.log({
-    //   addNodebtnBoxData: this.branchWrapData,
-    //   parentAddNodebtnBoxData: this.parentBranchWrapData
-    // });
     return createElement(
       "div",
       {
