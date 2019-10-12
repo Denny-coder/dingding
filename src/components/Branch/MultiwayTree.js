@@ -13,18 +13,30 @@ class ConditionNode {
         this.parent = null;
         this.conditionNodes = [
             {
-                "name": new Date().toLocaleTimeString() + '-1-添加',
+                "name": new Date().toLocaleTimeString() + '-1-条件',
                 "type": "condition",
                 "prevId": nodeId,
                 "nodeId": new Date().toLocaleTimeString() + '-1',
             },
             {
-                "name": new Date().toLocaleTimeString() + '-2-添加',
+                "name": new Date().toLocaleTimeString() + '-2-条件',
                 "type": "condition",
                 "prevId": nodeId,
                 "nodeId": new Date().toLocaleTimeString() + '-2',
             }
         ]
+
+    }
+}
+class ConditionNodeSingle {
+    constructor(nodeId, count) {
+        return {
+            "name": `${new Date().toLocaleTimeString()}-${count}-条件`,
+            "type": "condition",
+            "prevId": nodeId,
+            "nodeId": `${new Date().toLocaleTimeString()}-${count}`,
+        }
+
 
     }
 }
@@ -49,35 +61,39 @@ export class MultiwayTree {
     //广度优先遍历
     traverseBF(callback) {
         let queue = [], found = false;
-
         queue.push(this._root);
         let currentNode = queue.shift();
+        // 这里是用了栈的思想去找当前选中的节点
         while (!found && currentNode) {
             if (currentNode.type === "route") {
-                // currentNode.conditionNodes.some(item=>{
-
-                // })
+                found = callback(currentNode) === true ? true : false;
+                if (!found) {
+                    queue.push(...currentNode.conditionNodes)
+                    // 当 当前节点既有子节点也有条件节点时需要都push进入栈内
+                    currentNode.childNode && queue.push(currentNode.childNode)
+                    currentNode = queue.shift();
+                }
             } else {
                 found = callback(currentNode) === true ? true : false;
                 if (!found) {
-                    queue.push(currentNode.childNode)
+                    // 这里是因为当遇到route也就是条件节点的时候，会依次进入的每个条件中
+                    // 这里加一个判断是为了避免在进入到某个条件中没有审核节点还去遍历它
+                    currentNode.childNode && queue.push(currentNode.childNode)
                     currentNode = queue.shift();
                 }
             }
-
         }
     }
     contains(callback, traversal) {
         traversal.call(this, callback);
     }
     add(option, toData, traversal) {
-        debugger
-
-        let node = option.data.nodeType ? new AddNode(option.nodeId) : new ConditionNode(option.nodeId)
         if (this._root === null) {
             this._root = node;
             return this;
         }
+
+
         let parent = null,
             callback = function (node) {
                 if (node.nodeId === toData) {
@@ -86,17 +102,32 @@ export class MultiwayTree {
                 }
             };
         this.contains(callback, traversal);
-
+        let node
         if (parent) {
-            if (parent.childNode) {
+
+            // 确定有父节点再去创建子节点
+            // true 是 审核或抄送节点 false 是 条件节点
+            if (option.data.nodeType) {
+                node = new AddNode(option.nodeId)
+            } else if (option.data.type !== 'conditionNode') {
+                node = new ConditionNode(option.nodeId)
+            }
+            if (parent.childNode&&option.data.type !== 'conditionNode') {
+                // 如果在当前节点下增加审核节点，则当前节点下的所有子节点放置到条件1下
                 if (node.conditionNodes) {
                     node.conditionNodes[0].childNode = parent.childNode
                 } else {
                     node.childNode = parent.childNode;
                 }
             }
-            this.context.$set(parent, 'childNode', node)
-            node.parent = parent;
+            if (node) {
+                this.context.$set(parent, 'childNode', node)
+                node.parent = parent;
+            }
+            if (option.data.type === 'conditionNode') {
+                node = new ConditionNodeSingle(option.nodeId, parent.conditionNodes.length + 1)
+                parent.conditionNodes.push(node)
+            }
             return this;
         } else {
             throw new Error('Cannot add node to a non-existent parent.');

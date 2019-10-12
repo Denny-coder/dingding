@@ -73,7 +73,8 @@ export default {
         domList = domList.concat([
           createElement("BranchWrap", {
             props: {
-              branchWrapData: nodeData.conditionNodes
+              branchWrapData: nodeData.conditionNodes,
+              parentBranchWrapData: nodeData
             }
           })
         ]);

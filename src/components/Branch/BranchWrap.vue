@@ -1,6 +1,7 @@
 <script>
 export default {
   name: "BranchWrap",
+  inject: ["$bus"],
   props: {
     branchWrapData: {
       type: Array,
@@ -9,6 +10,12 @@ export default {
       }
     },
     parentBranchWrapData: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
+    parentNode: {
       type: Object,
       default: () => {
         return {};
@@ -22,6 +29,11 @@ export default {
   methods: {
     addBranch(data) {
       console.log(data);
+      this.$bus.$emit("treeChange", {
+        type: "conditionNode",
+        nodeType: false,
+        nodeId: data.nodeId
+      });
     }
   },
   render(createElement) {
@@ -53,6 +65,10 @@ export default {
         })
       ]);
     });
+    // console.log({
+    //   addNodebtnBoxData: this.branchWrapData,
+    //   parentAddNodebtnBoxData: this.parentBranchWrapData
+    // });
     return createElement(
       "div",
       {

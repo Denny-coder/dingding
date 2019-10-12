@@ -31,10 +31,7 @@ export default {
   },
   created() {
     this.nodeTree = new MultiwayTree(this.branchData, this);
-    console.log("this.branchData", this.branchData);
-    console.log(this.nodeTree);
     this.bus.$on("treeChange", data => {
-      console.log(data);
       const newTree = this.nodeTree.add(
         {
           nodeId: new Date().toLocaleTimeString(),
@@ -43,12 +40,12 @@ export default {
         data.nodeId,
         this.nodeTree.traverseBF
       );
-      console.log("newTree", newTree._root);
+      console.log('newTree._root',newTree._root)
       this.$emit("update:branchData", newTree._root);
     });
   },
   render(createElement) {
-    function getDom(nodeData) {
+    function getDom(nodeData, parentNode) {
       let domLoopList = [];
       if (nodeData.type === "start") {
         domLoopList = domLoopList.concat([
@@ -83,12 +80,13 @@ export default {
             props: {
               branchWrapData: nodeData.conditionNodes,
               parentBranchWrapData: nodeData
-            }
+            },
+            key: nodeData.name
           })
         ]);
       }
       if (nodeData.childNode) {
-        domLoopList = domLoopList.concat(getDom(nodeData.childNode));
+        domLoopList = domLoopList.concat(getDom(nodeData.childNode, nodeData));
       }
       return domLoopList;
     }

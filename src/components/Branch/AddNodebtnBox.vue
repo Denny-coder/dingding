@@ -1,7 +1,7 @@
 <template>
   <div class="add-node-btn-box">
     <div class="add-node-btn">
-      <button @click="printData">++</button>
+      <button @click="printData">+</button>
     </div>
   </div>
 </template>
@@ -10,6 +10,9 @@ export default {
   name: "AddNodebtnBox",
   inject: ["$bus"],
   props: {
+    parentNode: {
+      type: [Object, Array]
+    },
     addNodebtnBoxData: {
       type: [Object, Array]
     },
@@ -22,7 +25,12 @@ export default {
   },
   methods: {
     printData() {
-      console.log(this.parentAddNodebtnBoxData);
+      const info = confirm("确定是添加审核节点，取消是添加条件节点");
+      this.$bus.$emit("treeChange", {
+        type: "add",
+        nodeType: info,
+        nodeId: this.parentAddNodebtnBoxData.nodeId
+      });
     }
   }
 };

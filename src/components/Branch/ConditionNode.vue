@@ -22,7 +22,13 @@ export default {
   },
   methods: {
     printData() {
-      console.log(this.conditionNodeData);
+      console.log(this.conditionNodeData)
+      const info = confirm("确定是添加审核节点，取消是添加条件节点");
+      this.$bus.$emit("treeChange", {
+        type: "add",
+        nodeType: info,
+        nodeId: this.conditionNodeData.nodeId
+      });
     }
   }
 };
