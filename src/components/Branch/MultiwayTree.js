@@ -114,18 +114,17 @@ export class MultiwayTree {
                 node = new ConditionNode(option.nodeId, parent.nodeId)
             }
             if (parent.childNode && option.data.type !== 'conditionNode') {
-                // 如果在当前节点下增加审核节点，则当前节点下的所有子节点放置到条件1下
-                parent.childNode.prevId = node.nodeId
+                // 如果在当前节点下增加审核节点，则当前节点下的所有子节点放置到条件1下,并且变更其子元素的 prevId
                 if (node.conditionNodes) {
-                    // 变更其子元素的childNode
+                    parent.childNode.prevId = node.conditionNodes[0].nodeId
                     node.conditionNodes[0].childNode = parent.childNode
                 } else {
+                    parent.childNode.prevId = node.nodeId
                     node.childNode = parent.childNode;
                 }
             }
             if (node) {
                 this.context.$set(parent, 'childNode', node)
-                // node.parent = parent;
             }
             if (option.data.type === 'conditionNode') {
                 node = new ConditionNodeSingle(option.nodeId, parent.conditionNodes.length + 1, parent.nodeId)
@@ -165,7 +164,7 @@ export class MultiwayTree {
             }
             if (parent.childNode.nodeId === nodeId) {
                 if (parent.childNode.childNode) {
-                    parent.childNode.childNode.prevId=parent.nodeId
+                    parent.childNode.childNode.prevId = parent.nodeId
                     this.context.$set(parent, 'childNode', parent.childNode.childNode)
                 } else {
                     this.context.$delete(parent, 'childNode')
