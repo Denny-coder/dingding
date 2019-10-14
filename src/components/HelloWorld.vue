@@ -1,6 +1,21 @@
 <template>
-  <div style="width: 100%;">
-    <Branch :branchData.sync="branchNodeList"></Branch>
+  <div style="width: 100%;position:relative;">
+    <div class="zoom">
+      <button
+        class="zoom-out"
+        :disabled="rotate==0.5"
+        @click="changeRotate('-')"
+      >-</button><span>{{parseInt(rotate*100)}}%</span>
+      <button
+        :disabled="rotate==3"
+        class="zoom-in"
+        @click="changeRotate('+')"
+      >+</button>
+    </div>
+    <Branch
+      :branchData.sync="branchNodeList"
+      :style="`transform: scale(${rotate}); transform-origin: 50% 0px 0px;`"
+    ></Branch>
   </div>
 </template>
 
@@ -13,6 +28,7 @@ export default {
   },
   data() {
     return {
+      rotate: 1,
       branchNodeList: {
         name: "发起人",
         nodeId: "sid-startevent",
@@ -25,7 +41,9 @@ export default {
     msg: String
   },
   methods: {
-    add() {}
+    changeRotate(computeType) {
+      this.rotate = eval(`${this.rotate * 10}${computeType}1`) / 10;
+    }
   }
 };
 </script>
@@ -289,17 +307,44 @@ export default {
 .top-left-cover-line,
 .top-right-cover-line {
   position: absolute;
-  height: 3px;
+  height: 19px;
   width: 50%;
   background-color: #fff;
-  top: -2px;
+  top: -10px;
 }
 .bottom-left-cover-line,
 .bottom-right-cover-line {
   position: absolute;
-  height: 3px;
+  height: 19px;
   width: 50%;
   background-color: #fff;
-  bottom: -2px;
+  bottom: -10px;
+}
+.zoom {
+  display: flex;
+  position: fixed;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 40px;
+  width: 125px;
+  right: 140px;
+  margin-top: 30px;
+  z-index: 10;
+  .zoom-in,
+  .zoom-out {
+    border: 1px solid #000;
+    width: 30px;
+    line-height: 30px;
+    height: 30px;
+    background: #fff;
+    color: #c1c1cd;
+    cursor: pointer;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 }
 </style>

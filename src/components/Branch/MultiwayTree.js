@@ -161,6 +161,7 @@ export class MultiwayTree {
                 } else {
                     throw new Error('AddNode to remove does not exist.');
                 }
+                return
             }
             if (parent.childNode.nodeId === nodeId) {
                 if (parent.childNode.childNode) {
