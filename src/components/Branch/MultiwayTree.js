@@ -114,9 +114,10 @@ export class MultiwayTree {
                 node = new ConditionNode(option.nodeId, parent.nodeId)
             }
             if (parent.childNode && option.data.type !== 'conditionNode') {
-                // 如果在当前节点下增加审核节点，则当前节点下的所有子节点放置到条件1下,并且变更其子元素的 prevId
+                // 如果在当前节点下增加审核节点，则当前节点下的所有子节点放置到条件1下
                 if (node.conditionNodes) {
                     parent.childNode.prevId = node.conditionNodes[0].nodeId
+                    // 变更其子元素的childNode
                     node.conditionNodes[0].childNode = parent.childNode
                 } else {
                     parent.childNode.prevId = node.nodeId
@@ -125,6 +126,7 @@ export class MultiwayTree {
             }
             if (node) {
                 this.context.$set(parent, 'childNode', node)
+                // node.parent = parent;
             }
             if (option.data.type === 'conditionNode') {
                 node = new ConditionNodeSingle(option.nodeId, parent.conditionNodes.length + 1, parent.nodeId)
@@ -142,7 +144,7 @@ export class MultiwayTree {
             if (parent.conditionNodes) {
                 const len = parent.conditionNodes.length
                 const index = parent.conditionNodes.findIndex(item => item.nodeId === nodeId)
-                if (index >= 0) {
+                if (index >= 0) { // 说明当前要删除的是条件节点
                     if (len > 2) {
                         parent.conditionNodes.splice(index, 1)
                     } else if (len === 2) {
@@ -151,19 +153,19 @@ export class MultiwayTree {
                         })
                         const grandfatherNode = this.findParent(parent.prevId, traversal)
                         this.context.$delete(grandfatherNode, 'childNode')
-                        if (conditionNodes.length && conditionNodes[0].childNode) {
-                            conditionNodes[0].childNode.prevId = grandfatherNode.nodeId
-                            this.context.$set(grandfatherNode, 'childNode', conditionNodes[0].childNode)
-
+                        if (conditionNodes.length !== 0) {
+                            if (conditionNodes[0].childNode) {
+                                conditionNodes[0].childNode.prevId = grandfatherNode.nodeId
+                                this.context.$set(grandfatherNode, 'childNode', conditionNodes[0].childNode)
+                            }
+                            // this.context.$delete(grandfatherNode, 'conditionNodes')
                         }
-                        this.context.$delete(grandfatherNode, 'conditionNodes')
                     }
-                } else {
+                } else if (parent.childNode.nodeId !== nodeId) {
                     throw new Error('AddNode to remove does not exist.');
                 }
-                return
             }
-            if (parent.childNode.nodeId === nodeId) {
+            if (parent.childNode && parent.childNode.nodeId === nodeId) {
                 if (parent.childNode.childNode) {
                     parent.childNode.childNode.prevId = parent.nodeId
                     this.context.$set(parent, 'childNode', parent.childNode.childNode)
@@ -171,7 +173,6 @@ export class MultiwayTree {
                     this.context.$delete(parent, 'childNode')
                 }
             }
-
         } else {
             throw new Error('Parent does not exist.');
         }
