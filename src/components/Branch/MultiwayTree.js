@@ -126,7 +126,6 @@ export class MultiwayTree {
             }
             if (node) {
                 this.context.$set(parent, 'childNode', node)
-                // node.parent = parent;
             }
             if (option.data.type === 'conditionNode') {
                 node = new ConditionNodeSingle(option.nodeId, parent.conditionNodes.length + 1, parent.nodeId)
@@ -137,6 +136,12 @@ export class MultiwayTree {
             throw new Error('Cannot add node to a non-existent parent.');
         }
     }
+    getLastChildNode(node) {
+        if (node.childNode) {
+            return this.getLastChildNode(node.childNode)
+        }
+        return node
+    }
     remove(nodeId, fromData, traversal) {
         let childToRemove = null
         const parent = this.findParent(fromData, traversal)
@@ -145,6 +150,7 @@ export class MultiwayTree {
                 const len = parent.conditionNodes.length
                 const index = parent.conditionNodes.findIndex(item => item.nodeId === nodeId)
                 if (index >= 0) { // 说明当前要删除的是条件节点
+                    const grandsonNode = parent.childNode
                     if (len > 2) {
                         parent.conditionNodes.splice(index, 1)
                     } else if (len === 2) {
@@ -155,10 +161,22 @@ export class MultiwayTree {
                         this.context.$delete(grandfatherNode, 'childNode')
                         if (conditionNodes.length !== 0) {
                             if (conditionNodes[0].childNode) {
+                                // 将条件节点下的节点移到条件节点父亲的下面
+                                if (grandsonNode) {
+                                    // 递归获取当前节点的最后一个子节点
+                                    const lastNode = this.getLastChildNode(conditionNodes[0].childNode)
+                                    grandsonNode.prevId = lastNode.nodeId
+                                    this.context.$set(lastNode, 'childNode', grandsonNode)
+                                }
                                 conditionNodes[0].childNode.prevId = grandfatherNode.nodeId
                                 this.context.$set(grandfatherNode, 'childNode', conditionNodes[0].childNode)
                             }
-                            // this.context.$delete(grandfatherNode, 'conditionNodes')
+                        } else {
+                            if (grandsonNode) {
+                                grandsonNode.prevId = grandfatherNode.nodeId
+                                this.context.$set(grandfatherNode, 'childNode', grandsonNode)
+                            }
+
                         }
                     }
                 } else if (parent.childNode.nodeId !== nodeId) {
@@ -176,7 +194,7 @@ export class MultiwayTree {
         } else {
             throw new Error('Parent does not exist.');
         }
-        return childToRemove;
+        return this;
     }
     _findIndex(arr, nodeId) {
         let index = -1;

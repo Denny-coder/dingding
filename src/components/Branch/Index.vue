@@ -44,16 +44,17 @@ export default {
       this.$emit("update:branchData", newTree._root);
     });
     this.bus.$on("treeDelNode", data => {
-      console.log({
-        nodeId: data.currentNode.nodeId,
-        prevId: data.currentNode.prevId
-      });
-      console.log(data.currentNode)
+      // console.log({
+      //   nodeId: data.currentNode.nodeId,
+      //   prevId: data.currentNode.prevId
+      // });
+      // console.log(data.currentNode)
       const newTree = this.nodeTree.remove(
         data.currentNode.nodeId,
         data.currentNode.prevId,
         this.nodeTree.traverseBF
       );
+      console.log(newTree._root)
     });
   },
   render(createElement) {

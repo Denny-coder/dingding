@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      rotate: 1,
+      rotate: 0.5,
       branchNodeList: {
         name: "发起人",
         nodeId: "sid-startevent",
